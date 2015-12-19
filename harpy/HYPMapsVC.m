@@ -17,6 +17,7 @@
 #import "CLLocationManager+Shared.h"
 #import "CustomButton.h"
 #import <MapKit/MapKit.h>
+#import <BFPaperButton/BFPaperButton.h>
 @import GoogleMaps;
 
 @interface HYPMapsVC () <GMSMapViewDelegate>
@@ -69,6 +70,24 @@
     [self.locationManager startUpdatingLocation];
     [self queryForHRPosts];
     
+    
+    
+//    BFPaperButton *circle2 = [[BFPaperButton alloc] initWithFrame:CGRectMake(249, 300, 60, 60) raised:YES];
+//    [circle2 setTitleColor:[UIColor flatGoogleWhiteColor] forState:UIControlStateNormal];
+//    [circle2 setTitleColor:[UIColor flatGoogleDarkerWhiteColor] forState:UIControlStateHighlighted];
+//    [circle2 addTarget:self action:@selector(buttonDown) forControlEvents:UIControlEventTouchUpInside];
+//    [circle2 addTarget:self action:@selector(buttonRelease) forControlEvents:UIControlEventTouchUpInside];
+//    [circle2 addTarget:self action:@selector(buttonRelease) forControlEvents:UIControlEventTouchUpOutside];
+//    circle2.backgroundColor = [UIColor flatGoogleWhiteColor];
+//    circle2.tapCircleColor = [UIColor flatGoogleDarkerWhiteColor];
+//    circle2.cornerRadius = circle2.frame.size.width / 2;
+//    circle2.rippleFromTapLocation = YES;
+//    circle2.rippleBeyondBounds = NO;
+//    circle2.tapCircleDiameter = MAX(circle2.frame.size.width, circle2.frame.size.height) * 1.3;
+//    [self.view addSubview:circle2];
+//    
+    
+    
     self.shadowView = [[UIView alloc] init];
     [self.shadowView setBackgroundColor:[UIColor grayColor]];
     self.shadowView.alpha = 0.35;
@@ -105,8 +124,8 @@
     [self.view addSubview:self.shadowImageView];
     
     UIButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [self imageWithColor:FlatWhite];
-    [button setBackgroundImage:image forState:UIControlStateNormal];
+    UIImage *image3 = [self imageWithColor:FlatWhite];
+    [button setBackgroundImage:image3 forState:UIControlStateNormal];
     button.frame = CGRectMake(252, 380, 59, 59);
     button.clipsToBounds = YES;
     button.layer.cornerRadius = 60/2.0f;
@@ -131,13 +150,6 @@
                          self.shadowImageView.frame = CGRectMake(246, 376, 71, 71);
                      }
                      completion:nil];
-    
-    CATransition *animation = [CATransition animation];
-    [animation setDelegate:self];
-    [animation setDuration:0.5f];
-    [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
-    [animation setType:@"rippleEffect" ];
-    [self.shadowImageView.layer addAnimation:animation forKey:NULL];
 }
 
 -(void)buttonRelease
@@ -151,31 +163,6 @@
                      completion:nil];
 }
 
--(void)darkShadow
-{
-    [self.shadowView setBackgroundColor:[UIColor grayColor]];
-    self.shadowView.alpha = 0.45;
-    self.shadowView.frame = CGRectMake(252, 381, 100, 100);
-    self.shadowView.clipsToBounds = YES;
-    self.shadowView.layer.cornerRadius = 100/2.0f;
-    
-    //Get a UIImage from the UIView
-    UIGraphicsBeginImageContext(self.shadowView.bounds.size);
-    [self.shadowView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    self.viewImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    //Blur the UIImage with a CIFilter
-    CIImage *imageToBlur = [CIImage imageWithCGImage:self.viewImage.CGImage];
-    CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
-    [gaussianBlurFilter setValue:imageToBlur forKey: @"inputImage"];
-    [gaussianBlurFilter setValue:[NSNumber numberWithFloat: 2.3f] forKey: @"inputRadius"];
-    CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
-    UIImage *endImage = [[UIImage alloc] initWithCIImage:resultImage];
-    
-    self.shadowImageView.image = endImage;
-    [self.view insertSubview:self.shadowImageView atIndex:3];
-}
 
 //    [self.shadowView setBackgroundColor:[UIColor grayColor]];
 //    self.shadowView.alpha = 0.45;
