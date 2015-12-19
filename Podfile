@@ -11,6 +11,7 @@ target 'harpy' do
    pod 'ParseUI'
    pod 'SKSplashView'
    pod 'ChameleonFramework'
+   pod 'BFPaperButton', '~> 2.0.18'
 
 end
 

@@ -12,6 +12,7 @@
 #import "UIColor+HRPColor.h"
 #import <Parse/Parse.h>
 #import <ChameleonFramework/Chameleon.h>
+#import <QuartzCore/QuartzCore.h>
 #import <CoreImage/CoreImage.h>
 #import "CLLocationManager+Shared.h"
 #import "CustomButton.h"
@@ -32,7 +33,16 @@
 @property (nonatomic) UIView *modalView;
 @property (nonatomic) CLLocation *currentLocation;
 @property (nonatomic, strong) CLLocation* location;
-@property (nonatomic,strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
+@property (nonatomic, strong) UIView *shadowView;
+@property (nonatomic, strong) UIImage *viewImage;
+@property (nonatomic, strong) UIImage *lightBlurImage;
+@property (nonatomic, strong) UIImage *heavyBlurImage;
+@property (nonatomic, strong) UIImageView *shadowImageView;
+@property (nonatomic, strong) UIImageView *shadowImageInitalView;
+@property (nonatomic, strong) NSTimer *buttonTimer;
+@property (nonatomic) CFAbsoluteTime buttonHoldTime;
 
 @end
 
@@ -59,33 +69,40 @@
     [self.locationManager startUpdatingLocation];
     [self queryForHRPosts];
     
-    UIView *shadow = [[UIView alloc] init];
-    [shadow setBackgroundColor:[UIColor grayColor]];
-    shadow.alpha = 0.35;
-    shadow.frame = CGRectMake(252, 381, 100, 100);
-    shadow.clipsToBounds = YES;
-    shadow.layer.cornerRadius = 100/2.0f;
-    //[self.view addSubview:shadow];
+    self.shadowView = [[UIView alloc] init];
+    [self.shadowView setBackgroundColor:[UIColor grayColor]];
+    self.shadowView.alpha = 0.35;
+    self.shadowView.frame = CGRectMake(252, 381, 100, 100);
+    self.shadowView.clipsToBounds = YES;
+    self.shadowView.layer.cornerRadius = 100/2.0f;
     
     //Get a UIImage from the UIView
-    UIGraphicsBeginImageContext(shadow.bounds.size);
-    [shadow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsBeginImageContext(self.shadowView.bounds.size);
+    [self.shadowView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    self.viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     //Blur the UIImage with a CIFilter
-    CIImage *imageToBlur = [CIImage imageWithCGImage:viewImage.CGImage];
+    CIImage *imageToBlur = [CIImage imageWithCGImage:self.viewImage.CGImage];
     CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
     [gaussianBlurFilter setValue:imageToBlur forKey: @"inputImage"];
     [gaussianBlurFilter setValue:[NSNumber numberWithFloat: 0.803] forKey: @"inputRadius"];
     CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
-    UIImage *endImage = [[UIImage alloc] initWithCIImage:resultImage];
+    self.lightBlurImage = [[UIImage alloc] initWithCIImage:resultImage];
+    
+    //Blur the UIImage with a CIFilter
+    CIImage *imageToBlur2 = [CIImage imageWithCGImage:self.viewImage.CGImage];
+    CIFilter *gaussianBlurFilter2 = [CIFilter filterWithName: @"CIGaussianBlur"];
+    [gaussianBlurFilter2 setValue:imageToBlur2 forKey: @"inputImage"];
+    [gaussianBlurFilter2 setValue:[NSNumber numberWithFloat: 2.300] forKey: @"inputRadius"];
+    CIImage *resultImage2 = [gaussianBlurFilter2 valueForKey: @"outputImage"];
+    self.heavyBlurImage = [[UIImage alloc] initWithCIImage:resultImage2];
     
     //Place the UIImage in a UIImageView
-    UIImageView *newView = [[UIImageView alloc] init];
-    newView.frame = CGRectMake(249, 378, 65, 65);
-    newView.image = endImage;
-    [self.view addSubview:newView];
+    self.shadowImageView = [[UIImageView alloc] init];
+    self.shadowImageView.frame = CGRectMake(249, 378, 65, 65);
+    self.shadowImageView.image = self.lightBlurImage;
+    [self.view addSubview:self.shadowImageView];
     
     UIButton *button = [CustomButton buttonWithType:UIButtonTypeCustom];
     UIImage *image = [self imageWithColor:FlatWhite];
@@ -94,9 +111,112 @@
     button.clipsToBounds = YES;
     button.layer.cornerRadius = 60/2.0f;
     [[button layer] setBorderWidth:1.0f];
-    [[button layer] setBorderColor:[UIColor flatWhiteColor].CGColor];
+    [[button layer] setBorderColor:[UIColor flatGoogleWhiteColor].CGColor];
     [self.view addSubview:button];
+    
+    [button setBackgroundImage:[self imageWithColor:[UIColor flatGoogleDarkerWhiteColor]] forState:UIControlStateHighlighted];
+    
+    [button addTarget:self action:@selector(buttonDown) forControlEvents:UIControlEventTouchDown];
+    [button addTarget:self action:@selector(buttonRelease) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(buttonRelease) forControlEvents:UIControlEventTouchUpOutside];
+    
 }
+
+-(void)buttonDown
+{
+    [UIView animateWithDuration:0.05
+                          delay:0.0
+                        options:UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.shadowImageView.frame = CGRectMake(246, 376, 71, 71);
+                     }
+                     completion:nil];
+    
+    CATransition *animation = [CATransition animation];
+    [animation setDelegate:self];
+    [animation setDuration:0.5f];
+    [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
+    [animation setType:@"rippleEffect" ];
+    [self.shadowImageView.layer addAnimation:animation forKey:NULL];
+}
+
+-(void)buttonRelease
+{
+    [UIView animateWithDuration:0.05
+                          delay:0.0
+                        options:UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.shadowImageView.frame = CGRectMake(249, 378, 65, 65);
+                     }
+                     completion:nil];
+}
+
+-(void)darkShadow
+{
+    [self.shadowView setBackgroundColor:[UIColor grayColor]];
+    self.shadowView.alpha = 0.45;
+    self.shadowView.frame = CGRectMake(252, 381, 100, 100);
+    self.shadowView.clipsToBounds = YES;
+    self.shadowView.layer.cornerRadius = 100/2.0f;
+    
+    //Get a UIImage from the UIView
+    UIGraphicsBeginImageContext(self.shadowView.bounds.size);
+    [self.shadowView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    self.viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //Blur the UIImage with a CIFilter
+    CIImage *imageToBlur = [CIImage imageWithCGImage:self.viewImage.CGImage];
+    CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
+    [gaussianBlurFilter setValue:imageToBlur forKey: @"inputImage"];
+    [gaussianBlurFilter setValue:[NSNumber numberWithFloat: 2.3f] forKey: @"inputRadius"];
+    CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
+    UIImage *endImage = [[UIImage alloc] initWithCIImage:resultImage];
+    
+    self.shadowImageView.image = endImage;
+    [self.view insertSubview:self.shadowImageView atIndex:3];
+}
+
+//    [self.shadowView setBackgroundColor:[UIColor grayColor]];
+//    self.shadowView.alpha = 0.45;
+//    self.shadowView.frame = CGRectMake(252, 381, 100, 100);
+//    self.shadowView.clipsToBounds = YES;
+//    self.shadowView.layer.cornerRadius = 100/2.0f;
+//
+//    //Get a UIImage from the UIView
+//    UIGraphicsBeginImageContext(self.shadowView.bounds.size);
+//    [self.shadowView.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    self.viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//
+//    //Blur the UIImage with a CIFilter
+//    CIImage *imageToBlur = [CIImage imageWithCGImage:self.viewImage.CGImage];
+//    CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
+//    [gaussianBlurFilter setValue:imageToBlur forKey: @"inputImage"];
+//    [gaussianBlurFilter setValue:[NSNumber numberWithFloat: 2.3f] forKey: @"inputRadius"];
+//    CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
+//    UIImage *endImage = [[UIImage alloc] initWithCIImage:resultImage];
+//
+//    [self.shadowImageView removeFromSuperview];
+//    //self.shadowImageView.frame = CGRectMake(246, 376, 71, 71);
+//    self.shadowImageView.image = endImage;
+//    self.shadowImageView.alpha = 1;
+//    [self.view insertSubview:self.shadowImageView atIndex:3];
+//
+//    [UIView animateWithDuration:3.5
+//                          delay:0
+//                        options: UIViewAnimationOptionCurveEaseIn
+//                     animations:^{
+//                         self.shadowImageView.image = endImage;
+//                         self.shadowImageView.frame = CGRectMake(246, 376, 71, 71);
+//                         self.shadowImageView.alpha = 1;
+//                     }
+//                     completion:^(BOOL finished){
+//                         NSLog(@"Done!");
+//                     }];
+
+
+
 
 - (UIImage *)imageWithColor:(UIColor *)color
 {
