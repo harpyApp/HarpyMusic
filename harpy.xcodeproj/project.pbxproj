@@ -34,7 +34,6 @@
 		E9335C751BFA7EBD002DD9C6 /* harpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9335C741BFA7EBD002DD9C6 /* harpyTests.m */; };
 		E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */; };
 		E93801151BFBE9C8004CC8A2 /* HRPSpotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */; };
-		E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */; };
 		E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */; };
 		E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801231BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m */; };
 		E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */ = {isa = PBXBuildFile; fileRef = E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */; };
@@ -47,7 +46,6 @@
 		E976148E1C0A6648003B3C5B /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */; };
 		E976148F1C0A664A003B3C5B /* SF-UI-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */; };
 		E97614901C0A664C003B3C5B /* SF-UI-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */; };
-		E9B2E0501C26F24B005526CE /* HYPPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B2E04F1C26F24B005526CE /* HYPPlayer.m */; settings = {ASSET_TAGS = (); }; };
 		E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8CAB81C0BB2CA00836B40 /* HRPCreateProfileVC.m */; };
 		E9C902971C1C924B0008B883 /* HRPLaunchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C902961C1C924B0008B883 /* HRPLaunchVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9C902991C1C94D40008B883 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C902981C1C94D40008B883 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -130,8 +128,6 @@
 		E93801111BFBE956004CC8A2 /* HRPMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPMapsViewController.m; sourceTree = "<group>"; };
 		E93801131BFBE9C8004CC8A2 /* HRPSpotifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSpotifyViewController.h; sourceTree = "<group>"; };
 		E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPSpotifyViewController.m; sourceTree = "<group>"; };
-		E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLoginRedirectViewController.h; sourceTree = "<group>"; };
-		E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLoginRedirectViewController.m; sourceTree = "<group>"; };
 		E93801191BFC23A7004CC8A2 /* HRPLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLocationManager.h; sourceTree = "<group>"; };
 		E938011A1BFC23A7004CC8A2 /* HRPLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPLocationManager.m; sourceTree = "<group>"; };
 		E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPSpotifySearchViewController.h; sourceTree = "<group>"; };
@@ -151,8 +147,6 @@
 		E976148A1C0A6607003B3C5B /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
 		E976148B1C0A6607003B3C5B /* SF-UI-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Medium.otf"; sourceTree = "<group>"; };
 		E976148C1C0A6607003B3C5B /* SF-UI-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Heavy.otf"; sourceTree = "<group>"; };
-		E9B2E04E1C26F24B005526CE /* HYPPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPPlayer.h; sourceTree = "<group>"; };
-		E9B2E04F1C26F24B005526CE /* HYPPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPPlayer.m; sourceTree = "<group>"; };
 		E9C8CAB71C0BB2CA00836B40 /* HRPCreateProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPCreateProfileVC.h; sourceTree = "<group>"; };
 		E9C8CAB81C0BB2CA00836B40 /* HRPCreateProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPCreateProfileVC.m; sourceTree = "<group>"; };
 		E9C902951C1C924B0008B883 /* HRPLaunchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPLaunchVC.h; sourceTree = "<group>"; };
@@ -223,8 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				E90587271C1CC97A00313AB5 /* main.storyboard */,
-				E9B2E04E1C26F24B005526CE /* HYPPlayer.h */,
-				E9B2E04F1C26F24B005526CE /* HYPPlayer.m */,
 				E9110FB81C1D1E5B00684227 /* UIColor+HRPColor.h */,
 				E9110FB91C1D1E5B00684227 /* UIColor+HRPColor.m */,
 				E9110FAC1C1D0BCA00684227 /* HYPQueryable.h */,
@@ -332,8 +324,6 @@
 				E93801281BFCEADF004CC8A2 /* Login.storyboard */,
 				E93801321BFD1764004CC8A2 /* HRPUser.h */,
 				E93801331BFD1764004CC8A2 /* HRPUser.m */,
-				E93801161BFBEB97004CC8A2 /* HRPLoginRedirectViewController.h */,
-				E93801171BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m */,
 				E93801251BFCCA50004CC8A2 /* HRPLoginRedirect.h */,
 				E93801261BFCCA50004CC8A2 /* HRPLoginRedirect.m */,
 				E938012A1BFCED7D004CC8A2 /* HRPLoginOrSignupVC.h */,
@@ -589,7 +579,6 @@
 				3BAC25221C04B381004C6790 /* HRPTrackSearchViewController.m in Sources */,
 				E9110FAB1C1D001C00684227 /* HYPProfileVC.m in Sources */,
 				E93801241BFC2B90004CC8A2 /* HRPSpotifySearchViewController.m in Sources */,
-				E93801181BFBEB97004CC8A2 /* HRPLoginRedirectViewController.m in Sources */,
 				E90587321C1CD0C700313AB5 /* HYPUserSearchVC.m in Sources */,
 				E91B6FDF1C19E7B000FEC1AB /* HRPNetworkAlertVC.m in Sources */,
 				3B0EFCD01C11F0BC0086545B /* HRPPostFeedViewController.m in Sources */,
@@ -597,7 +586,6 @@
 				E9110FBA1C1D1E5B00684227 /* UIColor+HRPColor.m in Sources */,
 				E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */,
 				3B0A73221BFCD58E0010A257 /* HRPTrackCreator.m in Sources */,
-				E9B2E0501C26F24B005526CE /* HYPPlayer.m in Sources */,
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,
 				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,

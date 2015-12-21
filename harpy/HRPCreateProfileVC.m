@@ -29,7 +29,8 @@
 {
     [super viewDidLoad];
     [self setupProfile];
-    [self.navigationController setNavigationBarHidden:YES]; // Carrys over from other VC's
+    [self.navigationController setNavigationBarHidden:YES];
+    self.tabBarController.tabBar.hidden = YES;
     
     UIImage * buttonImage = [UIImage imageNamed:@"plusPhoto"];
     [self.photoButton setBackgroundImage:buttonImage forState:UIControlStateNormal];

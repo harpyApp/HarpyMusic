@@ -13,7 +13,7 @@
 #import "HRPSpotifyViewController.h"
 #import "HRPValidationManager.h"
 #import <Spotify/Spotify.h>
-#import <QuartzCore/QuartzCore.h> // Required for boarder color
+#import <QuartzCore/QuartzCore.h>
 #import "Constants.h"
 @import SafariServices;
 
@@ -449,7 +449,7 @@
                  auth.sessionUserDefaultsKey = canonicalUsername;
                  [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogInNotificationName object:nil];
                  
-                 [self showMapsStoryboard];
+                 [self showMainStoryboard];
              }
              else
              {
@@ -523,9 +523,9 @@
     [self performSegueWithIdentifier:@"sendToSignup" sender:self];
 }
 
-- (void)showMapsStoryboard
+- (void)showMainStoryboard
 {
-    [self performSegueWithIdentifier:@"sendToMaps" sender:self];
+    [self performSegueWithIdentifier:@"sendToMain" sender:self];
 }
 
 #pragma mark - Instance Methods
