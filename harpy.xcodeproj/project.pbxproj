@@ -18,7 +18,6 @@
 		3BAC25251C050D41004C6790 /* HRPPostPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25241C050D41004C6790 /* HRPPostPreviewViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC25281C0CA4F6004C6790 /* HRPPost.m */; settings = {ASSET_TAGS = (); }; };
 		3BC25DEB1C0E0F3D00A831CE /* postTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */; settings = {ASSET_TAGS = (); }; };
-		3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */; };
 		3D34D7C31BFE226C00C86BF3 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D34D7C21BFE226C00C86BF3 /* Map.storyboard */; };
 		E90587281C1CC97A00313AB5 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90587271C1CC97A00313AB5 /* main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E90587321C1CD0C700313AB5 /* HYPUserSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E90587311C1CD0C700313AB5 /* HYPUserSearchVC.m */; settings = {ASSET_TAGS = (); }; };
@@ -60,7 +59,6 @@
 		E9F69D4C1C17CE1700E9C784 /* HRPAccountInformationTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4B1C17CE1700E9C784 /* HRPAccountInformationTableVC.m */; settings = {ASSET_TAGS = (); }; };
 		E9F69D4F1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */; settings = {ASSET_TAGS = (); }; };
 		E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */; };
-		E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */; };
 		E9FA64D41C039E43008DDE69 /* HRPManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */; };
 		E9FA64D61C03BA9C008DDE69 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */; };
 		E9FA64D81C03BAC6008DDE69 /* TrackViews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FA64D71C03BAC6008DDE69 /* TrackViews.storyboard */; };
@@ -100,8 +98,6 @@
 		3BAC25271C0CA4F6004C6790 /* HRPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPPost.h; sourceTree = "<group>"; };
 		3BAC25281C0CA4F6004C6790 /* HRPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPPost.m; sourceTree = "<group>"; };
 		3BC25DEA1C0E0F3D00A831CE /* postTable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = postTable.storyboard; sourceTree = "<group>"; };
-		3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
-		3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
 		3D34D7C21BFE226C00C86BF3 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		6DB65EC059DFF1DB09801C30 /* Pods-harpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-harpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-harpy/Pods-harpy.release.xcconfig"; sourceTree = "<group>"; };
 		8A0453F870576313A0151B46 /* libPods-harpy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-harpy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,8 +172,6 @@
 		E9F69D4E1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBarStyle.m"; sourceTree = "<group>"; };
 		E9F8CE791BFE622F00979181 /* CLLocationManager+Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Shared.h"; sourceTree = "<group>"; };
 		E9F8CE7A1BFE622F00979181 /* CLLocationManager+Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Shared.m"; sourceTree = "<group>"; };
-		E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentViewController.h"; sourceTree = "<group>"; };
-		E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentViewController.m"; sourceTree = "<group>"; };
 		E9FA64D21C039E43008DDE69 /* HRPManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPManagerViewController.h; sourceTree = "<group>"; };
 		E9FA64D31C039E43008DDE69 /* HRPManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPManagerViewController.m; sourceTree = "<group>"; };
 		E9FA64D51C03BA9C008DDE69 /* UserProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
@@ -275,10 +269,6 @@
 				E9C902981C1C94D40008B883 /* LaunchScreen.storyboard */,
 				E9C902951C1C924B0008B883 /* HRPLaunchVC.h */,
 				E9C902961C1C924B0008B883 /* HRPLaunchVC.m */,
-				3D32C79B1BFE8572007B2DF7 /* CLLocationManager+Shared.h */,
-				3D32C79F1BFE86B1007B2DF7 /* CLLocationManager+Shared.m */,
-				E9F8CE7C1BFFA4BD00979181 /* UIViewController+PresentViewController.h */,
-				E9F8CE7D1BFFA4BD00979181 /* UIViewController+PresentViewController.m */,
 				E93801131BFBE9C8004CC8A2 /* HRPSpotifyViewController.h */,
 				E93801141BFBE9C8004CC8A2 /* HRPSpotifyViewController.m */,
 				E93801221BFC2B90004CC8A2 /* HRPSpotifySearchViewController.h */,
@@ -584,7 +574,6 @@
 				E9E211171BFD76B700739143 /* HRPValidationManager.m in Sources */,
 				E938011B1BFC23A7004CC8A2 /* HRPLocationManager.m in Sources */,
 				3BAC25291C0CA4F6004C6790 /* HRPPost.m in Sources */,
-				3D32C7A01BFE86B1007B2DF7 /* CLLocationManager+Shared.m in Sources */,
 				E93801121BFBE956004CC8A2 /* HRPMapsViewController.m in Sources */,
 				E9F69D4F1C17F81100E9C784 /* UINavigationController+StatusBarStyle.m in Sources */,
 				E93801341BFD1764004CC8A2 /* HRPUser.m in Sources */,
@@ -612,7 +601,6 @@
 				E9C8CAB91C0BB2CA00836B40 /* HRPCreateProfileVC.m in Sources */,
 				E9F8CE7B1BFE622F00979181 /* CLLocationManager+Shared.m in Sources */,
 				E93801271BFCCA50004CC8A2 /* HRPLoginRedirect.m in Sources */,
-				E9F8CE7E1BFFA4BD00979181 /* UIViewController+PresentViewController.m in Sources */,
 				E9C902971C1C924B0008B883 /* HRPLaunchVC.m in Sources */,
 				3BAC251C1BFF87EF004C6790 /* HRPTempTableViewController.m in Sources */,
 				E9335C5C1BFA7EBC002DD9C6 /* main.m in Sources */,

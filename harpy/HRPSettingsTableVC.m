@@ -40,7 +40,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,18 +52,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"editProfileCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    if (indexPath.row == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"updateAccountCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"spacyCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"logoutCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -76,28 +68,20 @@
     CGFloat totalCellView = self.view.frame.size.height * 0.768;
     CGFloat customTableCellHeight = totalCellView/10;
     
-    if (indexPath.row == 0) // HeaderCell's
+    if (indexPath.row == 0)
     {
         customTableCellHeight = totalCellView/8;
     }
-    if (indexPath.row == 3) // SpacerCells
+    if (indexPath.row == 1)
     {
-        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10*3);
+        customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10);
     }
     
     return customTableCellHeight;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cell selected at %ld", indexPath.row);
-    
-    if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"sendToEditProfile" sender:self];
-    }
     if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"sendToAccountInformation" sender:self];
-    }
-    if (indexPath.row == 4) {
         [self logoutclicked];
     }
 }
@@ -111,11 +95,10 @@
 
 - (void)logoutclicked
 {
-    NSLog(@"CLICKED: logout button");
-    
     [self.parseService logout];
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

@@ -12,7 +12,6 @@
 #import "HRPParseNetworkService.h"
 #import "HRPSpotifyViewController.h"
 #import "HRPValidationManager.h"
-#import "UIViewController+PresentViewController.h"
 #import <Spotify/Spotify.h>
 #import <QuartzCore/QuartzCore.h> // Required for boarder color
 #import "Constants.h"
@@ -712,12 +711,12 @@
     NSURL *spotifyURL = [NSURL URLWithString:@"https://www.spotify.com/signup/"];
     
     SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:spotifyURL];
-    [self presentViewController:safariVC animated:YES];
+    //[self presentViewController:safariVC animated:YES];
 }
 
 -(void)loginCompleted:(NSNotification *)notification
 {
-    [self dismissViewControllerAnimated:YES];
+    //[self dismissViewControllerAnimated:YES];
     
     SPTAuth *auth = [SPTAuth defaultInstance];
     if (auth.session && [auth.session isValid])
