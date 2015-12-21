@@ -22,7 +22,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.view.backgroundColor = [UIColor colorWithHue:0 saturation:0 brightness:0.98 alpha:1];
 }
 
@@ -65,7 +64,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat totalCellView = self.view.frame.size.height * 0.768;
+    CGFloat const kMultiplierForMaxTableViewHeightWithoutCreatingScrollBar = 0.816;
+    CGFloat totalCellView = (self.view.frame.size.height - (self.navigationController.navigationBar.frame.size.height + self.tabBarController.tabBar.frame.size.height)) * kMultiplierForMaxTableViewHeightWithoutCreatingScrollBar;
     CGFloat customTableCellHeight = totalCellView/10;
     
     if (indexPath.row == 0)
@@ -75,6 +75,10 @@
     if (indexPath.row == 1)
     {
         customTableCellHeight = totalCellView - (totalCellView/8 + totalCellView/10);
+    }
+    if (indexPath.row == 2)
+    {
+        customTableCellHeight = totalCellView/10;
     }
     
     return customTableCellHeight;

@@ -86,7 +86,7 @@
 
 - (void)setupFollowersAndFans
 {
-    //PFRelation *followingCount = self.user[@"following"];
+
     PFRelation *relation = [self.user relationForKey:@"following"];
     PFQuery *query = [relation query];
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
@@ -98,7 +98,6 @@
     PFQuery *fansQuery = [PFUser query];
     [fansQuery whereKey:@"following" equalTo:self.user];
     [fansQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        // so i think this will return all the users who are following self.user
         NSLog(@"FANS: %@", objects);
         self.userFans = objects;
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
