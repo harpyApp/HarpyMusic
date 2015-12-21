@@ -46,7 +46,7 @@
 }
 
 -(void)showHome {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Map" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:HomeViewControllerStoryboardID];
     
     [self setEmbeddedViewController:viewController];

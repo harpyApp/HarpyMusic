@@ -100,8 +100,10 @@
 - (void)logoutclicked
 {
     [self.parseService logout];
-    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogOutNotificationName object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:LogInViewControllerStoryboardID];
+    
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 

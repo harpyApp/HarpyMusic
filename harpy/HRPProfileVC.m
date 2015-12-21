@@ -86,21 +86,26 @@
 
 - (void)setupFollowersAndFans
 {
-
     PFRelation *relation = [self.user relationForKey:@"following"];
     PFQuery *query = [relation query];
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-         NSLog(@"FOLLOWERS: %@", self.user);
-        self.userFollowing = results;
+        self.userFollowing = [results mutableCopy];
         self.followingCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFollowing.count];
     }];
-
+    
     PFQuery *fansQuery = [PFUser query];
     [fansQuery whereKey:@"following" equalTo:self.user];
     [fansQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSLog(@"FANS: %@", objects);
-        self.userFans = objects;
+        self.userFans = [objects mutableCopy];
         self.fansCountLabel.text = [NSString stringWithFormat:@"%i", (int)self.userFans.count];
+        
+        for (PFUser *user in self.userFans)
+        {
+            if ([[PFUser currentUser] isEqual:user])
+            {
+                [self.followOrEditButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+            }
+        }
     }];
 }
 - (void)updatePostCount
@@ -120,9 +125,14 @@
     {
         self.userAvatar.layer.cornerRadius = 59;
     }
-    else
+    else if ([[UIScreen mainScreen] bounds].size.width == 320.0f)
     {
-        self.userAvatar.layer.cornerRadius = 45;
+        self.userAvatar.layer.cornerRadius = 38;
+        
+        if ([[UIScreen mainScreen] bounds].size.height == 568.0f)
+        {
+            self.userAvatar.layer.cornerRadius = 45;
+        }
     }
     
     UIColor *ironColor = [UIColor colorWithHue:0 saturation:0 brightness:0.85 alpha:1];
@@ -182,13 +192,12 @@
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
-            NSLog(@"USER: %@", objects);
             self.userObject = [objects objectAtIndex:0];
             [self retrieveUserAvatar];
         }
         else
         {
-            NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+            //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
         }
     }];
 }
@@ -209,7 +218,7 @@
             }
             else
             {
-                NSLog(@"ERROR: %@ %@", error, [error userInfo]);
+                //NSLog(@"ERROR: %@ %@", error, [error userInfo]);
             }
         }];
     }
@@ -234,11 +243,10 @@
             self.userPosts = objects;
             [self.postsTableview reloadData];
             [self updatePostCount];
-            NSLog(@"PARSE POSTS: %@", self.userPosts);
         }
         else
         {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            //NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
 }
