@@ -11,11 +11,6 @@ We're using [Google Maps](https://developers.google.com/maps/documentation/ios-s
 
 ##Authors
 
-* [Amy Joscelyn](https://github.com/amyjoscelyn)
 * [Kiara Robles](https://github.com/kiaraRobles)
-* Olutosin Fashusi
 * [Phil Milot](https://github.com/milot31)
-
-###Demo
-
-Forthcoming!
+* [Amy Joscelyn](https://github.com/amyjoscelyn)
